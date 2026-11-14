@@ -1,9 +1,16 @@
 #pragma once
-Duration(int minutes = 0, int seconds = 0);
-int total_seconds() const;
+class Duration {
+public:
+    // your constructor, total_seconds, operator+, operator==
+    Duration(int minutes = 0, int seconds = 0);
 
-Duration operator+(const Duration& other) const;
+    int total_seconds() const;
 
-bool operator==(const Duration& other) const;
+    Duration operator+(const Duration& other) const;
 
-std::ostream& operator<<(std::ostream& out, const Duration& d);   // free function
+    bool operator==(const Duration& other) const;
+
+private:
+    int total_seconds_;
+};
+
