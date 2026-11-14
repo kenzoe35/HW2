@@ -12,7 +12,7 @@ Duration::Duration(int minutes, int seconds) {
 
 int Duration::total_seconds() const {
     // TODO: implement total_seconds
-    return 0;
+    return m_total_seconds;
 }
 
 Duration Duration::operator+(const Duration& other) const {
