@@ -1,4 +1,6 @@
 #pragma once
+#include "track.h"
+
 class Duration {
 public:
     // your constructor, total_seconds, operator+, operator==
@@ -11,6 +13,6 @@ public:
     bool operator==(const Duration& other) const;
 
 private:
-    int total_seconds_;
+    int m_total_seconds;
 };
 
