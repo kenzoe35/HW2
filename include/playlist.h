@@ -1,4 +1,7 @@
 #pragma once
+#include "track.h"
+#include "duration.h"
+
 class Playlist {
 public:
     // your constructor, destructor, add_track, size, total_length, find_track
