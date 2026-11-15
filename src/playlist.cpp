@@ -19,7 +19,15 @@ Playlist::~Playlist() {
 
 bool Playlist::add_track(const Track& track) {
     // TODO: implement add_track
-    return false;
+    if (m_count >= m_capacity || track.title.empty()) {
+        return false;
+    }
+
+    // Add track to the end of the array and increment count
+    m_tracks[m_count] = track;
+    m_count++;
+
+    return true;
 }
 
 int Playlist::size() const {
