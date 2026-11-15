@@ -32,14 +32,23 @@ bool Playlist::add_track(const Track& track) {
 
 int Playlist::size() const {
     // TODO: implement size
-    return 0;
+    return m_count;
 }
 
 Duration Playlist::total_length() const {
     // TODO: implement total_length
-    return Duration();
-}
+    Duration total;
 
+    if (m_count == 0) {
+        return total;
+    }
+
+    for (int i = 0; i < m_count; i++) {
+        total = total + m_tracks[i].length;
+    }
+
+    return total;
+}
 const Track* Playlist::find_track(const std::string& title) const {
     // TODO: implement find_track
     return nullptr;
