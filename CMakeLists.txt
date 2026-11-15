@@ -8,14 +8,18 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # Warnings and runtime checks for every target in this project.
 # AddressSanitizer reports out-of-bounds access and memory leaks;
 # UndefinedBehaviorSanitizer reports signed overflow and similar.
-add_compile_options(-Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer)
-add_link_options(-fsanitize=address,undefined)
-
+# Warnings and runtime checks conditional on the compiler
+if (MSVC)
+    add_compile_options(/W4 /WX -fno-omit-frame-pointer)
+else()
+    add_compile_options(-Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer)
+    add_link_options(-fsanitize=address,undefined)
+endif()
 # Everything except main() lives in a library so the tests can link to it.
 # Add each new .cpp file to this list.
 add_library(hw2_lib
     src/duration.cpp
-    src/playlist.cpp
+    #src/playlist.cpp
 )
 target_include_directories(hw2_lib PUBLIC include)
 
