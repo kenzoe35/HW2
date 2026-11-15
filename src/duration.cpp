@@ -19,7 +19,7 @@ int Duration::total_seconds() const {
 
 Duration Duration::operator+(const Duration& other) const {
     // TODO: implement operator+
-    return Duration();
+    return Duration(0, m_total_seconds + other.m_total_seconds);
 }
 
 bool Duration::operator==(const Duration& other) const {
