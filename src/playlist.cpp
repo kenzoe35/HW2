@@ -2,10 +2,19 @@
 
 Playlist::Playlist(int capacity) {
     // TODO: implement constructor
+    if (capacity < 1) {
+        m_capacity = 1;
+    }
+    else {
+        m_capacity = capacity;
+    }
+    m_tracks = new Track[m_capacity];
+    m_count = 0;
 }
 
 Playlist::~Playlist() {
     // TODO: implement destructor
+    delete[] m_tracks;
 }
 
 bool Playlist::add_track(const Track& track) {
