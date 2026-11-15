@@ -1,5 +1,5 @@
 #pragma once
-#include "track.h"
+#include <ostream>
 
 class Duration {
 public:
@@ -15,4 +15,6 @@ public:
 private:
     int m_total_seconds;
 };
+
+std::ostream& operator<<(std::ostream& out, const Duration& d);
 
