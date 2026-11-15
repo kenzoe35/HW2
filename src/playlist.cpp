@@ -1,60 +1,54 @@
 #include "playlist.h"
+#include  <iostream>
 
 Playlist::Playlist(int capacity) {
-    // TODO: implement constructor
     if (capacity < 1) {
-        m_capacity = 1;
+        capacity_ = 1;
     }
     else {
-        m_capacity = capacity;
+        capacity_ = capacity;
     }
-    m_tracks = new Track[m_capacity];
-    m_count = 0;
+    tracks_ = new Track[capacity_];
+    count_ = 0;
 }
 
 Playlist::~Playlist() {
-    // TODO: implement destructor
-    delete[] m_tracks;
+    delete[] tracks_;
 }
 
 bool Playlist::add_track(const Track& track) {
-    // TODO: implement add_track
-    if (m_count >= m_capacity || track.title.empty()) {
+    if (count_ >= capacity_ || track.title.empty()) {
         return false;
     }
 
-    // Add track to the end of the array and increment count
-    m_tracks[m_count] = track;
-    m_count++;
+    tracks_[count_] = track;
+    count_++;
 
     return true;
 }
 
 int Playlist::size() const {
-    // TODO: implement size
-    return m_count;
+    return count_;
 }
 
 Duration Playlist::total_length() const {
-    // TODO: implement total_length
     Duration total;
 
-    if (m_count == 0) {
+    if (count_ == 0) {
         return total;
     }
 
-    for (int i = 0; i < m_count; i++) {
-        total = total + m_tracks[i].length;
+    for (int i = 0; i < count_; i++) {
+        total = total + tracks_[i].length;
     }
 
     return total;
 }
 
 const Track* Playlist::find_track(const std::string& title) const {
-    // TODO: implement find_track
-    for (int i = 0; i < m_count; i++) {
-        if (m_tracks[i].title == title) {
-            return &m_tracks[i];
+    for (int i = 0; i < count_; i++) {
+        if (tracks_[i].title == title) {
+            return &tracks_[i];
         }
     }
     return nullptr;
