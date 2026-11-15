@@ -1,4 +1,5 @@
 #include "duration.h"
+#include <ostream>
 
 Duration::Duration(int minutes, int seconds) {
     int total = (minutes * 60) + seconds;
@@ -22,10 +23,13 @@ Duration Duration::operator+(const Duration& other) const {
 
 bool Duration::operator==(const Duration& other) const {
     // TODO: implement operator==
-    return false;
+    return m_total_seconds == other.m_total_seconds;
 }
 
 std::ostream& operator<<(std::ostream& out, const Duration& d) {
     // TODO: implement operator<<
+    int minutes = d.total_seconds() / 60;
+    int seconds = d.total_seconds() % 60;
+    out << minutes << ":" << seconds;
     return out;
 }
