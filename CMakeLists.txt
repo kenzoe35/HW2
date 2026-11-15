@@ -19,7 +19,7 @@ endif()
 # Add each new .cpp file to this list.
 add_library(hw2_lib
     src/duration.cpp
-    #src/playlist.cpp
+    src/playlist.cpp
 )
 target_include_directories(hw2_lib PUBLIC include)
 
